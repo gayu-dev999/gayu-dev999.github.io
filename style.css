@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -68,12 +69,21 @@ a {
   letter-spacing: -0.01em;
 }
 
-/* Hero */
+/* Full-screen sections */
 
-.hero {
+.hero,
+.apps,
+.footer {
   min-height: 100vh;
   min-height: 100dvh;
 
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Hero */
+
+.hero {
   max-width: 720px;
 
   display: flex;
@@ -129,9 +139,6 @@ a {
 /* Apps */
 
 .apps {
-  min-height: 100vh;
-  min-height: 100dvh;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -256,9 +263,6 @@ a {
 /* Footer */
 
 .footer {
-  min-height: 100vh;
-  min-height: 100dvh;
-
   display: grid;
   grid-template-columns: 1fr auto;
   align-content: center;
@@ -315,13 +319,18 @@ a {
 
   .header {
     min-height: 72px;
+
     padding: 20px 0;
   }
 
-  .hero {
+  .hero,
+  .apps,
+  .footer {
     min-height: 100vh;
     min-height: 100dvh;
+  }
 
+  .hero {
     padding: 64px 0;
   }
 
@@ -342,9 +351,6 @@ a {
   }
 
   .apps {
-    min-height: 100vh;
-    min-height: 100dvh;
-
     padding: 64px 0;
   }
 
@@ -367,9 +373,6 @@ a {
   }
 
   .footer {
-    min-height: 100vh;
-    min-height: 100dvh;
-
     grid-template-columns: 1fr;
 
     padding: 64px 0;
