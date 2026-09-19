@@ -1,3 +1,4 @@
+```css
 :root {
   --background: #f7f6f2;
   --surface: #ffffff;
@@ -17,18 +18,13 @@
   box-sizing: border-box;
 }
 
-.hero,
-.apps,
-.footer {
-  scroll-snap-align: start;
-}
-
 html {
-  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+
   background: var(--background);
   color: var(--text);
 
@@ -50,19 +46,20 @@ a {
 }
 
 .page {
-  width: 100%;
+  width: min(calc(100% - 40px), var(--page-width));
+  margin: 0 auto;
 }
 
 /* Header */
 
 .header {
-  min-height: 80px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 clamp(20px, 5vw, 72px);
+  min-height: 80px;
+
+  padding: 24px 0;
 }
 
 .brand {
@@ -77,17 +74,13 @@ a {
   min-height: 100vh;
   min-height: 100dvh;
 
-  width: 100%;
+  max-width: 720px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  padding:
-    clamp(48px, 8vw, 100px)
-    clamp(20px, 7vw, 110px);
-
-  max-width: none;
+  padding: 80px 0;
 }
 
 .eyebrow {
@@ -139,15 +132,11 @@ a {
   min-height: 100vh;
   min-height: 100dvh;
 
-  width: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  padding:
-    clamp(60px, 8vw, 110px)
-    clamp(20px, 7vw, 110px);
+  padding: 80px 0;
 }
 
 .section-label {
@@ -164,12 +153,12 @@ a {
 }
 
 .app-card {
-  width: 100%;
-
   display: flex;
   gap: 30px;
 
-  padding: clamp(28px, 4vw, 48px);
+  width: 100%;
+
+  padding: 34px;
 
   background: var(--surface);
 
@@ -270,15 +259,13 @@ a {
   min-height: 100vh;
   min-height: 100dvh;
 
-  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: center;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  gap: 28px;
 
-  padding:
-    clamp(60px, 8vw, 110px)
-    clamp(20px, 7vw, 110px);
+  padding: 80px 0;
 
   border-top: 1px solid var(--border);
 
@@ -301,9 +288,14 @@ a {
 
 .footer-links {
   display: flex;
+  align-items: flex-start;
   gap: 24px;
 
   font-size: 13px;
+}
+
+.footer-links a {
+  transition: color 160ms ease;
 }
 
 .footer-links a:hover {
@@ -317,13 +309,20 @@ a {
 /* Mobile */
 
 @media (max-width: 640px) {
+  .page {
+    width: min(calc(100% - 28px), var(--page-width));
+  }
 
   .header {
-    padding: 24px 0;
+    min-height: 72px;
+    padding: 20px 0;
   }
 
   .hero {
-    padding: 80px 0 100px;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    padding: 64px 0;
   }
 
   .hero h1 {
@@ -332,12 +331,21 @@ a {
 
   .hero-zh {
     margin-top: 28px;
+
     font-size: 18px;
   }
 
   .intro {
     margin-top: 34px;
+
     font-size: 15px;
+  }
+
+  .apps {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    padding: 64px 0;
   }
 
   .app-card {
@@ -359,16 +367,16 @@ a {
   }
 
   .footer {
+    min-height: 100vh;
+    min-height: 100dvh;
+
     grid-template-columns: 1fr;
+
+    padding: 64px 0;
   }
 
   .copyright {
     grid-column: auto;
   }
-
-  .hero h1,
-.hero-zh,
-.intro {
-  max-width: 760px;
 }
-}
+```
