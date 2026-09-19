@@ -17,8 +17,14 @@
   box-sizing: border-box;
 }
 
+.hero,
+.apps,
+.footer {
+  scroll-snap-align: start;
+}
+
 html {
-  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
 }
 
 body {
