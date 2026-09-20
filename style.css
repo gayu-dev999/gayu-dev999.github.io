@@ -1,7 +1,7 @@
 ```css
 
-html,
-body {
+.hero-page,
+.apps-page {
   background: red !important;
 }
 
