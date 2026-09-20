@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -15,81 +16,137 @@
 </head>
 
 <body>
-  <main class="page">
 
-    <header class="header">
-      <a class="brand" href="/">Gayu Dev</a>
-    </header>
+  <main class="site">
 
-    <section class="hero">
-      <p class="eyebrow">Gayu Dev</p>
+    <!-- Page 1: Header + Hero -->
+    <section class="snap-page hero-page">
 
-      <h1>
-        Quiet tools for<br />
-        everyday life.
-      </h1>
+      <div class="page-container">
 
-      <p class="hero-zh">
-        為日常留下一點安靜的空間。
-      </p>
+        <header class="header">
+          <a class="brand" href="/">Gayu Dev</a>
+        </header>
 
-      <p class="intro">
-        Simple and thoughtful apps designed to help you notice
-        the small rhythms of everyday life.
-      </p>
+        <div class="hero">
 
-      <p class="intro intro-zh">
-        用簡單而溫和的方式，記錄生活，也慢慢看見自己的日常節奏。
-      </p>
-    </section>
+          <div class="hero-content">
 
-    <section class="apps">
-      <div class="section-label">
-        <span>Apps</span>
-        <span>應用程式</span>
-      </div>
+            <p class="eyebrow">
+              Gayu Dev
+            </p>
 
-      <a class="app-card" href="#">
-        <div class="app-icon">
-          <span>m</span>
-        </div>
+            <h1>
+              Quiet tools for<br />
+              everyday life.
+            </h1>
 
-        <div class="app-content">
-          <div class="app-heading">
-            <h2>MoodTracker</h2>
-            <span class="status">Coming soon</span>
+            <p class="hero-zh">
+              為日常留下一點安靜的空間。
+            </p>
+
+            <p class="intro">
+              Simple and thoughtful apps designed to help you notice
+              the small rhythms of everyday life.
+            </p>
+
+            <p class="intro intro-zh">
+              用簡單而溫和的方式，記錄生活，
+              也慢慢看見自己的日常節奏。
+            </p>
+
           </div>
 
-          <p class="app-description">
-            Notice your time, mood, and everyday rhythm.
-          </p>
-
-          <p class="app-description app-description-zh">
-            記錄時間與情緒，慢慢看見自己的生活節奏。
-          </p>
-
-          <span class="learn-more">
-            Learn more
-            <span aria-hidden="true">→</span>
-          </span>
         </div>
-      </a>
-    </section>
 
-    <footer class="footer">
-      <div>
-        <strong>Gayu Dev</strong>
-        <p>Thoughtful tools for quieter days.</p>
       </div>
 
-      <nav class="footer-links" aria-label="Footer">
-        <a href="mailto:ga.yu.dev999@gmail.com">Support</a>
-      </nav>
+    </section>
 
-      <p class="copyright">
-        © <span id="year"></span> Gayu Dev
-      </p>
-    </footer>
+    <!-- Page 2: Apps + Footer -->
+    <section class="snap-page apps-page">
+
+      <div class="page-container apps-page-container">
+
+        <section class="apps">
+
+          <div class="apps-content">
+
+            <div class="section-label">
+              <span>Apps</span>
+              <span>應用程式</span>
+            </div>
+
+            <a class="app-card" href="#">
+
+              <div class="app-icon" aria-hidden="true">
+                <span>m</span>
+              </div>
+
+              <div class="app-content">
+
+                <div class="app-heading">
+
+                  <h2>MoodTracker</h2>
+
+                  <span class="status">
+                    Coming soon
+                  </span>
+
+                </div>
+
+                <p class="app-description">
+                  Notice your time, mood, and everyday rhythm.
+                </p>
+
+                <p class="app-description app-description-zh">
+                  記錄時間與情緒，慢慢看見自己的生活節奏。
+                </p>
+
+                <span class="learn-more">
+                  Learn more
+                  <span aria-hidden="true">→</span>
+                </span>
+
+              </div>
+
+            </a>
+
+          </div>
+
+        </section>
+
+        <footer class="footer">
+
+          <div class="footer-brand">
+
+            <strong>
+              Gayu Dev
+            </strong>
+
+            <p>
+              Thoughtful tools for quieter days.
+            </p>
+
+          </div>
+
+          <nav class="footer-links" aria-label="Footer">
+
+            <a href="mailto:ga.yu.dev999@gmail.com">
+              Support
+            </a>
+
+          </nav>
+
+          <p class="copyright">
+            © <span id="year"></span> Gayu Dev
+          </p>
+
+        </footer>
+
+      </div>
+
+    </section>
 
   </main>
 
@@ -97,5 +154,7 @@
     document.getElementById("year").textContent =
       new Date().getFullYear();
   </script>
+
 </body>
 </html>
+```
