@@ -1,4 +1,10 @@
 ```css
+
+html,
+body {
+  background: red !important;
+}
+
 :root {
   --background: #f7f6f2;
   --surface: #ffffff;
