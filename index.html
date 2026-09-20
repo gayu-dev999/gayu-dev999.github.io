@@ -20,7 +20,7 @@
   <main class="site">
 
     <!-- Page 1: Header + Hero -->
-    <section class="snap-page hero-page">
+    <section   id="home" class="snap-page hero-page">
 
       <div class="page-container">
 
@@ -64,7 +64,7 @@
     </section>
 
     <!-- Page 2: Apps + Footer -->
-    <section class="snap-page apps-page">
+    <section id="apps" class="snap-page apps-page">
 
       <div class="page-container apps-page-container">
 
@@ -150,10 +150,91 @@
 
   </main>
 
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+  const pages = [
+    document.getElementById("home"),
+    document.getElementById("apps")
+  ];
+
+  let currentPage = 0;
+  let isScrolling = false;
+
+  function goToPage(index) {
+    if (
+      index < 0 ||
+      index >= pages.length ||
+      isScrolling
+    ) {
+      return;
+    }
+
+    currentPage = index;
+    isScrolling = true;
+
+    pages[index].scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+    window.setTimeout(() => {
+      isScrolling = false;
+    }, 700);
+  }
+
+  window.addEventListener(
+    "wheel",
+    (event) => {
+      if (isScrolling) {
+        return;
+      }
+
+      if (event.deltaY > 5) {
+        goToPage(currentPage + 1);
+      }
+
+      if (event.deltaY < -5) {
+        goToPage(currentPage - 1);
+      }
+    },
+    { passive: true }
+  );
+
+  let touchStartY = 0;
+
+  window.addEventListener(
+    "touchstart",
+    (event) => {
+      touchStartY =
+        event.touches[0].clientY;
+    },
+    { passive: true }
+  );
+
+  window.addEventListener(
+    "touchend",
+    (event) => {
+      const touchEndY =
+        event.changedTouches[0].clientY;
+
+      const distance =
+        touchStartY - touchEndY;
+
+      if (Math.abs(distance) < 30) {
+        return;
+      }
+
+      if (distance > 0) {
+        goToPage(currentPage + 1);
+      } else {
+        goToPage(currentPage - 1);
+      }
+    },
+    { passive: true }
+  );
+</script>
 
 </body>
 </html>
