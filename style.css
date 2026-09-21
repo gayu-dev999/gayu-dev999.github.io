@@ -1,4 +1,4 @@
-/* Version: 202609211400 */
+/* Version: 202609211405 */
 
 :root {
   --background: #f7f6f2;
@@ -43,6 +43,9 @@ html {
 
 body {
   margin: 0;
+
+  min-height: 100vh;
+  min-height: 100svh;
 
   background:
     var(--background);
@@ -98,14 +101,25 @@ img {
 ================================================== */
 
 .site {
-  width: 100%;
+  width:
+    100%;
 
-  min-height: 100vh;
-  min-height: 100svh;
+  min-height:
+    100vh;
 
-  display: flex;
-  flex-direction: column;
+  min-height:
+    100svh;
 
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  /*
+    Header 是 fixed，
+    所以整個內容區先讓出 Header 高度。
+  */
   padding-top:
     var(--header-height);
 }
@@ -143,11 +157,11 @@ img {
     1000;
 
   background:
-    rgba(247, 246, 242, 0.92);
+    rgba(247, 246, 242, 0.94);
 
   border-bottom:
     1px solid
-    rgba(231, 232, 228, 0.76);
+    rgba(231, 232, 228, 0.78);
 
   -webkit-backdrop-filter:
     blur(16px);
@@ -157,6 +171,12 @@ img {
 }
 
 .header-inner {
+  position:
+    relative;
+
+  z-index:
+    1001;
+
   width:
     min(
       calc(100% - 40px),
@@ -334,21 +354,27 @@ img {
   flex:
     1 1 auto;
 
-  display: flex;
-  align-items: center;
+  display:
+    flex;
+
+  align-items:
+    center;
 }
 
 .hero-content {
-  max-width:
+  width:
     100%;
 
+  max-width:
+    720px;
+
   padding:
-    32px 0 28px;
+    36px 0 28px;
 }
 
 .eyebrow {
   margin:
-    0 0 22px;
+    0 0 20px;
 
   color:
     var(--secondary-text);
@@ -389,13 +415,13 @@ img {
 
 .hero-zh {
   margin:
-    28px 0 0;
+    26px 0 0;
 
   font-size:
     19px;
 
   line-height:
-    1.65;
+    1.6;
 
   letter-spacing:
     0.03em;
@@ -406,7 +432,7 @@ img {
     550px;
 
   margin:
-    28px 0 0;
+    24px 0 0;
 
   color:
     var(--secondary-text);
@@ -415,25 +441,30 @@ img {
     16px;
 
   line-height:
-    1.7;
+    1.65;
 }
 
 .intro-zh {
   margin-top:
-    7px;
+    6px;
 }
 
 
 /* ==================================================
-   Apps Section
+   Apps
 ================================================== */
 
 .apps-section {
   flex:
     0 0 auto;
 
+  scroll-margin-top:
+    calc(
+      var(--header-height) + 20px
+    );
+
   padding:
-    12px 0 28px;
+    12px 0 26px;
 }
 
 .section-label {
@@ -447,7 +478,7 @@ img {
     space-between;
 
   margin-bottom:
-    14px;
+    12px;
 
   color:
     var(--secondary-text);
@@ -502,7 +533,7 @@ img {
     24px;
 
   padding:
-    28px;
+    26px;
 
   background:
     var(--surface);
@@ -539,25 +570,25 @@ img {
 
 .app-icon {
   flex:
-    0 0 84px;
+    0 0 82px;
 
   width:
-    84px;
+    82px;
 
   height:
-    84px;
+    82px;
 
   min-width:
-    84px;
+    82px;
 
   max-width:
-    84px;
+    82px;
 
   min-height:
-    84px;
+    82px;
 
   max-height:
-    84px;
+    82px;
 
   border-radius:
     21px;
@@ -640,7 +671,7 @@ img {
 
 .app-description {
   margin:
-    12px 0 0;
+    11px 0 0;
 
   color:
     var(--secondary-text);
@@ -669,13 +700,11 @@ img {
   margin-top:
     auto;
 
-  padding-bottom:
+  padding:
+    0 0
     max(
-      28px,
-      calc(
-        16px +
-        env(safe-area-inset-bottom)
-      )
+      22px,
+      env(safe-area-inset-bottom)
     );
 }
 
@@ -693,7 +722,7 @@ img {
     28px;
 
   padding:
-    20px 0 0;
+    18px 0 0;
 
   border-top:
     1px solid
@@ -827,29 +856,38 @@ img {
 
 
   /* --------------------------------------------------
-     Mobile Menu
+     Full-screen Mobile Menu
   -------------------------------------------------- */
 
-.mobile-menu {
-    position: fixed;
+  .mobile-menu {
+    position:
+      fixed;
 
-    top: var(--header-height);
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset:
+      0;
 
-    z-index: 999;
+    z-index:
+      999;
 
-    display: flex;
-    flex-direction: column;
+    display:
+      flex;
 
-    justify-content: center;
-    align-items: center;
+    flex-direction:
+      column;
 
-    gap: 28px;
+    justify-content:
+      center;
+
+    align-items:
+      center;
+
+    gap:
+      28px;
 
     padding:
-      32px
+      calc(
+        var(--header-height) + 24px
+      )
       24px
       max(
         32px,
@@ -857,7 +895,7 @@ img {
       );
 
     background:
-      rgba(247, 246, 242, 0.98);
+      rgba(247, 246, 242, 0.985);
 
     -webkit-backdrop-filter:
       blur(18px);
@@ -865,48 +903,57 @@ img {
     backdrop-filter:
       blur(18px);
 
-    opacity: 0;
+    opacity:
+      0;
 
-    visibility: hidden;
+    visibility:
+      hidden;
 
-    transform:
-      translateY(-8px);
-
-    pointer-events: none;
+    pointer-events:
+      none;
 
     transition:
       opacity 180ms ease,
-      transform 180ms ease,
       visibility 180ms ease;
   }
 
   .mobile-menu.is-open {
-    opacity: 1;
+    opacity:
+      1;
 
-    visibility: visible;
+    visibility:
+      visible;
 
-    transform:
-      translateY(0);
-
-    pointer-events: auto;
+    pointer-events:
+      auto;
   }
 
   .mobile-menu a {
-    width: auto;
+    padding:
+      6px 12px;
 
-    padding: 6px 12px;
-
-    border: 0;
+    border:
+      0;
 
     color:
       var(--text);
 
-    font-size: 24px;
+    font-size:
+      24px;
 
-    font-weight: 500;
+    font-weight:
+      500;
 
     letter-spacing:
       -0.02em;
+
+    transition:
+      opacity 160ms ease;
+  }
+
+  .mobile-menu a:hover {
+    opacity:
+      0.62;
   }
 
 
@@ -914,12 +961,23 @@ img {
      Hero
   -------------------------------------------------- */
 
+  .hero-section {
+    flex:
+      1 1 auto;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+  }
+
   .hero-content {
     max-width:
       100%;
 
     padding:
-      40px 0 34px;
+      30px 0 24px;
   }
 
   .eyebrow {
@@ -958,7 +1016,7 @@ img {
 
   .intro {
     margin-top:
-      22px;
+      20px;
 
     font-size:
       14px;
@@ -978,13 +1036,16 @@ img {
   -------------------------------------------------- */
 
   .apps-section {
+    flex:
+      0 0 auto;
+
     padding:
-      18px 0 38px;
+      10px 0 24px;
   }
 
   .section-label {
     margin-bottom:
-      12px;
+      10px;
 
     font-size:
       11px;
@@ -1101,6 +1162,12 @@ img {
   -------------------------------------------------- */
 
   .footer-section {
+    flex:
+      0 0 auto;
+
+    margin-top:
+      auto;
+
     padding-bottom:
       max(
         28px,
@@ -1213,6 +1280,7 @@ img {
   .desktop-nav a,
   .menu-button span,
   .mobile-menu,
+  .mobile-menu a,
   .footer-links a {
     transition:
       none;
