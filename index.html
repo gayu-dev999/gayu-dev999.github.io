@@ -18,17 +18,98 @@
 
   <link
     rel="stylesheet"
-    href="/style.css?v=202609211244"
+    href="/style.css?v=202609211257"
   />
 </head>
 
 <body>
 
+  <!-- ==================================================
+       Fixed Header
+  =================================================== -->
+
+  <header class="site-header">
+
+    <div class="header-inner">
+
+      <a
+        class="brand"
+        href="#home"
+      >
+        Gayu Dev
+      </a>
+
+      <!-- Desktop Navigation -->
+
+      <nav
+        class="desktop-nav"
+        aria-label="Main navigation"
+      >
+
+        <a href="#apps">
+          Apps
+        </a>
+
+        <a href="/moodtracker/privacy.html">
+          Privacy
+        </a>
+
+        <a href="mailto:ga.yu.dev999@gmail.com">
+          Support
+        </a>
+
+      </nav>
+
+      <!-- Mobile Menu Button -->
+
+      <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+
+    </div>
+
+    <!-- Mobile Navigation -->
+
+    <nav
+      id="mobile-menu"
+      class="mobile-menu"
+      aria-label="Mobile navigation"
+    >
+
+      <a href="#apps">
+        Apps
+      </a>
+
+      <a href="/moodtracker/privacy.html">
+        Privacy
+      </a>
+
+      <a href="mailto:ga.yu.dev999@gmail.com">
+        Support
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- ==================================================
+       Main
+  =================================================== -->
+
   <main class="site">
 
     <!-- ==================================================
          Page 1
-         Header + Hero
+         Hero
     =================================================== -->
 
     <section
@@ -37,42 +118,6 @@
     >
 
       <div class="page-container hero-page-container">
-
-        <!-- Header -->
-
-        <header class="header">
-
-          <a
-            class="header-item brand"
-            href="#home"
-          >
-            Gayu Dev
-          </a>
-
-          <a
-            class="header-item"
-            href="#apps"
-          >
-            Apps
-          </a>
-
-          <a
-            class="header-item"
-            href="/moodtracker/privacy.html"
-          >
-            Privacy
-          </a>
-
-          <a
-            class="header-item"
-            href="mailto:ga.yu.dev999@gmail.com"
-          >
-            Support
-          </a>
-
-        </header>
-
-        <!-- Hero -->
 
         <div class="hero">
 
@@ -109,6 +154,7 @@
 
     </section>
 
+
     <!-- ==================================================
          Page 2
          Apps + Footer
@@ -141,12 +187,6 @@
               </span>
 
             </div>
-
-            <!--
-              MoodTracker 尚未有正式 landing page，
-              因此目前不用 href="#"，
-              避免點擊後跳回頁面頂部。
-            -->
 
             <article class="app-card">
 
@@ -189,6 +229,7 @@
 
         </section>
 
+
         <!-- Footer -->
 
         <footer class="footer">
@@ -207,7 +248,7 @@
 
           <nav
             class="footer-links"
-            aria-label="Footer"
+            aria-label="Footer navigation"
           >
 
             <a href="/moodtracker/privacy.html">
@@ -232,7 +273,13 @@
 
   </main>
 
+
+  <!-- ==================================================
+       JavaScript
+  =================================================== -->
+
   <script>
+
     /* ==================================================
        Copyright
     ================================================== */
@@ -242,11 +289,105 @@
 
 
     /* ==================================================
+       Mobile navigation
+    ================================================== */
+
+    const menuButton =
+      document.querySelector(".menu-button");
+
+    const mobileMenu =
+      document.getElementById("mobile-menu");
+
+
+    function openMobileMenu() {
+      menuButton.classList.add("is-open");
+      mobileMenu.classList.add("is-open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+
+      menuButton.setAttribute(
+        "aria-label",
+        "Close navigation"
+      );
+
+      document.body.classList.add("menu-open");
+    }
+
+
+    function closeMobileMenu() {
+      menuButton.classList.remove("is-open");
+      mobileMenu.classList.remove("is-open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuButton.setAttribute(
+        "aria-label",
+        "Open navigation"
+      );
+
+      document.body.classList.remove("menu-open");
+    }
+
+
+    function toggleMobileMenu() {
+      const isOpen =
+        menuButton.classList.contains("is-open");
+
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    }
+
+
+    menuButton.addEventListener(
+      "click",
+      toggleMobileMenu
+    );
+
+
+    mobileMenu
+      .querySelectorAll("a")
+      .forEach((link) => {
+
+        link.addEventListener(
+          "click",
+          closeMobileMenu
+        );
+
+      });
+
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (
+          event.key === "Escape" &&
+          menuButton.classList.contains("is-open")
+        ) {
+          closeMobileMenu();
+          menuButton.focus();
+        }
+
+      }
+    );
+
+
+    /* ==================================================
        Real viewport height
        LINE / Safari / in-app browsers
     ================================================== */
 
     function updateViewportHeight() {
+
       const height =
         window.visualViewport?.height ||
         window.innerHeight;
@@ -255,36 +396,62 @@
         "--viewport-height",
         `${Math.round(height)}px`
       );
+
     }
+
 
     let viewportFrame = null;
 
+
     function scheduleViewportUpdate() {
+
       if (viewportFrame) {
         cancelAnimationFrame(viewportFrame);
       }
 
       viewportFrame =
-        requestAnimationFrame(updateViewportHeight);
+        requestAnimationFrame(
+          updateViewportHeight
+        );
+
     }
+
 
     updateViewportHeight();
 
+
     window.addEventListener(
       "resize",
-      scheduleViewportUpdate
+      () => {
+
+        scheduleViewportUpdate();
+
+        /*
+          如果從手機尺寸切換到桌面尺寸，
+          避免 mobile menu 還維持開啟狀態。
+        */
+
+        if (window.innerWidth > 640) {
+          closeMobileMenu();
+        }
+
+      }
     );
+
 
     window.addEventListener(
       "orientationchange",
       scheduleViewportUpdate
     );
 
+
     if (window.visualViewport) {
+
       window.visualViewport.addEventListener(
         "resize",
         scheduleViewportUpdate
       );
+
     }
 
 
@@ -297,10 +464,12 @@
       document.getElementById("apps")
     ];
 
+
     const prefersReducedMotion =
       window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
+
 
     let currentPage = 0;
     let isScrolling = false;
@@ -308,6 +477,7 @@
 
 
     function goToPage(index) {
+
       if (
         index < 0 ||
         index >= pages.length ||
@@ -316,8 +486,12 @@
         return;
       }
 
+
       currentPage = index;
       isScrolling = true;
+
+      closeMobileMenu();
+
 
       window.scrollTo({
         top: pages[index].offsetTop,
@@ -327,23 +501,34 @@
             : "smooth"
       });
 
+
       clearTimeout(scrollTimer);
 
-      scrollTimer =
-        window.setTimeout(() => {
-          isScrolling = false;
 
-          /*
-            LINE / Safari 的工具列可能會在滑動後
-            改變 viewport 高度，因此再量一次。
-          */
-          updateViewportHeight();
-        }, prefersReducedMotion ? 50 : 650);
+      scrollTimer =
+        window.setTimeout(
+          () => {
+
+            isScrolling = false;
+
+            /*
+              LINE / Safari 在滑動後可能重新調整
+              工具列與 viewport 高度。
+            */
+
+            updateViewportHeight();
+
+          },
+          prefersReducedMotion
+            ? 50
+            : 650
+        );
+
     }
 
 
     /* ==================================================
-       Header anchor navigation
+       Internal navigation
     ================================================== */
 
     document.querySelectorAll(
@@ -359,13 +544,16 @@
           const target =
             link.getAttribute("href");
 
+
           if (target === "#home") {
             goToPage(0);
           }
 
+
           if (target === "#apps") {
             goToPage(1);
           }
+
         }
       );
 
@@ -380,6 +568,17 @@
       "wheel",
       (event) => {
 
+        /*
+          Mobile menu 開啟時不做頁面切換。
+        */
+
+        if (
+          menuButton.classList.contains("is-open")
+        ) {
+          return;
+        }
+
+
         if (
           isScrolling ||
           Math.abs(event.deltaY) < 8
@@ -387,13 +586,16 @@
           return;
         }
 
+
         event.preventDefault();
+
 
         if (event.deltaY > 0) {
           goToPage(currentPage + 1);
         } else {
           goToPage(currentPage - 1);
         }
+
       },
       {
         passive: false
@@ -407,6 +609,7 @@
 
     let touchStartY = 0;
     let touchCurrentY = 0;
+    let touchStartedInsideHeader = false;
 
 
     window.addEventListener(
@@ -417,11 +620,22 @@
           return;
         }
 
+
+        touchStartedInsideHeader =
+          Boolean(
+            event.target.closest(
+              ".site-header"
+            )
+          );
+
+
         touchStartY =
           event.touches[0].clientY;
 
+
         touchCurrentY =
           touchStartY;
+
       },
       {
         passive: true
@@ -437,8 +651,10 @@
           return;
         }
 
+
         touchCurrentY =
           event.touches[0].clientY;
+
       },
       {
         passive: true
@@ -450,27 +666,41 @@
       "touchend",
       () => {
 
-        if (isScrolling) {
+        /*
+          點擊 / 滑動 Header 或選單時，
+          不要觸發換頁。
+        */
+
+        if (
+          touchStartedInsideHeader ||
+          menuButton.classList.contains("is-open") ||
+          isScrolling
+        ) {
+          touchStartedInsideHeader = false;
           return;
         }
+
 
         const distance =
           touchStartY - touchCurrentY;
 
+
         /*
-          避免普通點擊或極小幅度滑動
-          被當成換頁。
+          過小的移動視為一般點擊，
+          不切換頁面。
         */
 
         if (Math.abs(distance) < 24) {
           return;
         }
 
+
         if (distance > 0) {
           goToPage(currentPage + 1);
         } else {
           goToPage(currentPage - 1);
         }
+
       },
       {
         passive: true
@@ -490,14 +720,17 @@
           return;
         }
 
+
         const midpoint =
           window.scrollY +
           window.innerHeight / 2;
+
 
         currentPage =
           midpoint >= pages[1].offsetTop
             ? 1
             : 0;
+
       },
       {
         passive: true
