@@ -1,4 +1,4 @@
-/* Version: 202609211244 */
+/* Version: 202609211257 */
 
 :root {
   --background: #f7f6f2;
@@ -18,16 +18,18 @@
   --page-width: 960px;
 
   /*
-    JavaScript 會依照 LINE / Safari
-    實際可視高度覆蓋這個值。
+    LINE / Safari 實際可視高度。
+    JavaScript 會更新這個值。
   */
   --viewport-height: 100dvh;
+
+  --header-height: 72px;
 }
 
 
-/* --------------------------------------------------
+/* ==================================================
    Reset
--------------------------------------------------- */
+================================================== */
 
 * {
   box-sizing: border-box;
@@ -38,14 +40,18 @@ html {
 
   scroll-snap-type: none;
 
-  background: var(--background);
+  background:
+    var(--background);
 }
 
 body {
   margin: 0;
 
-  background: var(--background);
-  color: var(--text);
+  background:
+    var(--background);
+
+  color:
+    var(--text);
 
   font-family:
     -apple-system,
@@ -56,249 +62,496 @@ body {
     Arial,
     sans-serif;
 
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing:
+    antialiased;
+
+  text-rendering:
+    optimizeLegibility;
+}
+
+body.menu-open {
+  overflow:
+    hidden;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color:
+    inherit;
+
+  text-decoration:
+    none;
+}
+
+button {
+  font:
+    inherit;
 }
 
 img {
-  max-width: 100%;
+  display:
+    block;
+
+  max-width:
+    100%;
 }
 
 
-/* --------------------------------------------------
+/* ==================================================
    Main layout
--------------------------------------------------- */
+================================================== */
 
 .site {
-  width: 100%;
+  width:
+    100%;
 }
 
 .snap-page {
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height:
+    100vh;
+
+  min-height:
+    100dvh;
 }
 
 .page-container {
-  width: min(
-    calc(100% - 40px),
-    var(--page-width)
-  );
+  width:
+    min(
+      calc(100% - 40px),
+      var(--page-width)
+    );
 
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height:
+    100vh;
 
-  margin: 0 auto;
+  min-height:
+    100dvh;
+
+  margin:
+    0 auto;
+
+  /*
+    Header 是 fixed，
+    所以內容必須為它保留空間。
+  */
+  padding-top:
+    var(--header-height);
 }
 
 
-/* --------------------------------------------------
-   Page 1
--------------------------------------------------- */
+/* ==================================================
+   Fixed Header
+================================================== */
 
-.hero-page {
-  background: var(--background);
+.site-header {
+  position:
+    fixed;
+
+  top:
+    0;
+
+  left:
+    0;
+
+  right:
+    0;
+
+  z-index:
+    1000;
+
+  background:
+    rgba(247, 246, 242, 0.92);
+
+  border-bottom:
+    1px solid
+    rgba(231, 232, 228, 0.76);
+
+  -webkit-backdrop-filter:
+    blur(16px);
+
+  backdrop-filter:
+    blur(16px);
 }
 
-.hero-page-container {
-  display: flex;
-  flex-direction: column;
+.header-inner {
+  width:
+    min(
+      calc(100% - 40px),
+      var(--page-width)
+    );
+
+  height:
+    var(--header-height);
+
+  margin:
+    0 auto;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    flex-start;
+
+  gap:
+    36px;
+}
+
+.brand {
+  flex:
+    0 0 auto;
+
+  color:
+    var(--text);
+
+  font-size:
+    17px;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    -0.01em;
 }
 
 
-/* --------------------------------------------------
-   Header - Desktop
--------------------------------------------------- */
+/* ==================================================
+   Desktop Navigation
+================================================== */
 
-.header {
-  flex: 0 0 auto;
+.desktop-nav {
+  display:
+    flex;
 
-  min-height: 80px;
+  align-items:
+    center;
 
-  display: grid;
-  grid-template-columns:
-    repeat(4, minmax(0, 1fr));
+  justify-content:
+    flex-start;
 
-  align-items: center;
-
-  padding: 24px 0;
+  gap:
+    28px;
 }
 
-.header-item {
-  color: var(--secondary-text);
+.desktop-nav a {
+  color:
+    var(--secondary-text);
 
-  font-size: 14px;
-  font-weight: 500;
+  font-size:
+    14px;
+
+  font-weight:
+    500;
 
   transition:
     color 160ms ease;
 }
 
-.header-item:hover {
-  color: var(--text);
-}
-
-.header-item:nth-child(1) {
-  text-align: left;
-}
-
-.header-item:nth-child(2),
-.header-item:nth-child(3) {
-  text-align: center;
-}
-
-.header-item:nth-child(4) {
-  text-align: right;
-}
-
-.brand {
-  color: var(--text);
-
-  font-size: 17px;
-  font-weight: 600;
-
-  letter-spacing: -0.01em;
+.desktop-nav a:hover {
+  color:
+    var(--text);
 }
 
 
-/* --------------------------------------------------
-   Hero
--------------------------------------------------- */
+/* ==================================================
+   Mobile Menu Button
+================================================== */
+
+.menu-button {
+  display:
+    none;
+
+  width:
+    40px;
+
+  height:
+    40px;
+
+  margin-left:
+    auto;
+
+  padding:
+    9px;
+
+  background:
+    transparent;
+
+  border:
+    0;
+
+  border-radius:
+    10px;
+
+  cursor:
+    pointer;
+}
+
+.menu-button span {
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    1.5px;
+
+  margin:
+    5px 0;
+
+  background:
+    var(--text);
+
+  border-radius:
+    999px;
+
+  transform-origin:
+    center;
+
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+
+/* Hamburger → X */
+
+.menu-button.is-open span:nth-child(1) {
+  transform:
+    translateY(6.5px)
+    rotate(45deg);
+}
+
+.menu-button.is-open span:nth-child(2) {
+  opacity:
+    0;
+}
+
+.menu-button.is-open span:nth-child(3) {
+  transform:
+    translateY(-6.5px)
+    rotate(-45deg);
+}
+
+
+/* ==================================================
+   Mobile Menu
+================================================== */
+
+.mobile-menu {
+  display:
+    none;
+}
+
+
+/* ==================================================
+   Hero Page
+================================================== */
+
+.hero-page {
+  background:
+    var(--background);
+}
+
+.hero-page-container {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+}
 
 .hero {
-  flex: 1;
+  flex:
+    1;
 
-  display: flex;
-  align-items: center;
+  min-height:
+    0;
+
+  display:
+    flex;
+
+  align-items:
+    center;
 }
 
 .hero-content {
-  width: 100%;
-  max-width: 720px;
+  width:
+    100%;
 
-  padding: 48px 0 96px;
+  max-width:
+    720px;
+
+  padding:
+    48px 0 96px;
 }
 
 .eyebrow {
-  margin: 0 0 28px;
+  margin:
+    0 0 28px;
 
-  color: var(--secondary-text);
+  color:
+    var(--secondary-text);
 
-  font-size: 14px;
-  font-weight: 500;
+  font-size:
+    14px;
 
-  letter-spacing: 0.08em;
+  font-weight:
+    500;
 
-  text-transform: uppercase;
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
 }
 
 .hero h1 {
-  margin: 0;
+  margin:
+    0;
 
-  font-size: clamp(
-    48px,
-    9vw,
-    82px
-  );
+  font-size:
+    clamp(
+      48px,
+      9vw,
+      82px
+    );
 
-  line-height: 0.98;
+  line-height:
+    0.98;
 
-  letter-spacing: -0.055em;
+  letter-spacing:
+    -0.055em;
 
-  font-weight: 500;
+  font-weight:
+    500;
 }
 
 .hero-zh {
-  margin: 36px 0 0;
+  margin:
+    36px 0 0;
 
-  font-size: 20px;
+  font-size:
+    20px;
 
-  line-height: 1.7;
+  line-height:
+    1.7;
 
-  letter-spacing: 0.03em;
+  letter-spacing:
+    0.03em;
 }
 
 .intro {
-  max-width: 550px;
+  max-width:
+    550px;
 
-  margin: 42px 0 0;
+  margin:
+    42px 0 0;
 
-  color: var(--secondary-text);
+  color:
+    var(--secondary-text);
 
-  font-size: 17px;
+  font-size:
+    17px;
 
-  line-height: 1.8;
+  line-height:
+    1.8;
 }
 
 .intro-zh {
-  margin-top: 10px;
+  margin-top:
+    10px;
 }
 
 
-/* --------------------------------------------------
-   Page 2
--------------------------------------------------- */
+/* ==================================================
+   Apps Page
+================================================== */
 
 .apps-page {
-  background: var(--background);
+  background:
+    var(--background);
 }
 
 .apps-page-container {
-  display: flex;
-  flex-direction: column;
+  display:
+    flex;
+
+  flex-direction:
+    column;
 }
 
 
-/* --------------------------------------------------
+/* ==================================================
    Apps
--------------------------------------------------- */
+================================================== */
 
 .apps {
-  flex: 1;
+  flex:
+    1;
 
-  display: flex;
-  align-items: center;
+  min-height:
+    0;
+
+  display:
+    flex;
+
+  align-items:
+    center;
 }
 
 .apps-content {
-  width: 100%;
+  width:
+    100%;
 
-  padding: 56px 0 36px;
+  padding:
+    42px 0 30px;
 }
 
 .section-label {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display:
+    flex;
 
-  margin-bottom: 20px;
+  align-items:
+    center;
 
-  color: var(--secondary-text);
+  justify-content:
+    space-between;
 
-  font-size: 13px;
+  margin-bottom:
+    20px;
 
-  letter-spacing: 0.05em;
+  color:
+    var(--secondary-text);
+
+  font-size:
+    13px;
+
+  letter-spacing:
+    0.05em;
 }
 
 
-/* --------------------------------------------------
+/* ==================================================
    App Card
--------------------------------------------------- */
+================================================== */
 
 .app-card {
-  width: 100%;
+  width:
+    100%;
 
-  display: flex;
+  display:
+    flex;
 
-  gap: 30px;
+  gap:
+    30px;
 
-  padding: 34px;
+  padding:
+    34px;
 
-  background: var(--surface);
+  background:
+    var(--surface);
 
   border:
     1px solid
@@ -326,65 +579,89 @@ img {
 }
 
 
-/* --------------------------------------------------
+/* ==================================================
    App Icon
--------------------------------------------------- */
+================================================== */
 
 .app-icon {
   flex:
     0 0 94px;
 
-  width: 94px;
-  height: 94px;
+  width:
+    94px;
 
-  min-width: 94px;
-  max-width: 94px;
+  height:
+    94px;
 
-  min-height: 94px;
-  max-height: 94px;
+  min-width:
+    94px;
 
-  border-radius: 24px;
+  max-width:
+    94px;
 
-  overflow: hidden;
+  min-height:
+    94px;
+
+  max-height:
+    94px;
+
+  border-radius:
+    24px;
+
+  overflow:
+    hidden;
 }
 
 .app-icon img {
-  display: block;
+  width:
+    100%;
 
-  width: 100%;
-  height: 100%;
+  height:
+    100%;
 
-  object-fit: cover;
+  object-fit:
+    cover;
 }
 
 
-/* --------------------------------------------------
-   App Text
--------------------------------------------------- */
+/* ==================================================
+   App Content
+================================================== */
 
 .app-content {
-  flex: 1;
+  flex:
+    1;
 
-  min-width: 0;
+  min-width:
+    0;
 }
 
 .app-heading {
-  display: flex;
-  align-items: center;
+  display:
+    flex;
 
-  gap: 14px;
+  align-items:
+    center;
 
-  flex-wrap: wrap;
+  gap:
+    14px;
+
+  flex-wrap:
+    wrap;
 }
 
 .app-heading h2 {
-  margin: 0;
+  margin:
+    0;
 
-  font-size: 27px;
+  font-size:
+    27px;
 
-  font-weight: 500;
+  font-weight:
+    500;
 
-  letter-spacing: -0.025em;
+  letter-spacing:
+    -0.025em;
 }
 
 .status {
@@ -427,23 +704,33 @@ img {
 }
 
 
-/* --------------------------------------------------
+/* ==================================================
    Footer - Desktop
--------------------------------------------------- */
+================================================== */
 
 .footer {
-  flex: 0 0 auto;
+  flex:
+    0 0 auto;
 
-  display: grid;
+  display:
+    grid;
 
   grid-template-columns:
     minmax(0, 1fr)
+    auto
     auto;
 
-  gap: 28px;
+  align-items:
+    start;
+
+  column-gap:
+    28px;
+
+  row-gap:
+    0;
 
   padding:
-    28px 0 30px;
+    24px 0 28px;
 
   border-top:
     1px solid
@@ -476,7 +763,8 @@ img {
 }
 
 .footer-links {
-  display: flex;
+  display:
+    flex;
 
   align-items:
     flex-start;
@@ -500,7 +788,13 @@ img {
 
 .copyright {
   grid-column:
-    1 / -1;
+    auto;
+
+  margin:
+    0;
+
+  white-space:
+    nowrap;
 }
 
 
@@ -510,11 +804,15 @@ img {
 
 @media (max-width: 640px) {
 
-  /*
-    關鍵：
-    不再只相信 vh / svh / dvh，
-    而是使用 JS 寫入的實際 viewport 高度。
-  */
+  :root {
+    --header-height:
+      64px;
+  }
+
+
+  /* --------------------------------------------------
+     Real mobile viewport
+  -------------------------------------------------- */
 
   .snap-page,
   .page-container {
@@ -524,15 +822,16 @@ img {
 
 
   /* --------------------------------------------------
-     Mobile width
+     Mobile Width
   -------------------------------------------------- */
 
-  .page-container {
+  .page-container,
+  .header-inner {
     width:
-      min(
-        calc(100% - 40px),
-        var(--page-width)
-      );
+      calc(100% - 40px);
+
+    max-width:
+      var(--page-width);
 
     margin:
       0 auto;
@@ -540,7 +839,133 @@ img {
 
 
   /* --------------------------------------------------
-     Page 1 exact viewport
+     Header
+  -------------------------------------------------- */
+
+  .header-inner {
+    height:
+      var(--header-height);
+
+    gap:
+      0;
+  }
+
+  .brand {
+    font-size:
+      16px;
+  }
+
+  .desktop-nav {
+    display:
+      none;
+  }
+
+  .menu-button {
+    display:
+      block;
+  }
+
+
+  /* --------------------------------------------------
+     Mobile Dropdown
+  -------------------------------------------------- */
+
+  .mobile-menu {
+    position:
+      absolute;
+
+    top:
+      var(--header-height);
+
+    left:
+      0;
+
+    right:
+      0;
+
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    padding:
+      6px 20px 16px;
+
+    background:
+      rgba(247, 246, 242, 0.97);
+
+    border-bottom:
+      1px solid
+      var(--border);
+
+    -webkit-backdrop-filter:
+      blur(18px);
+
+    backdrop-filter:
+      blur(18px);
+
+    opacity:
+      0;
+
+    visibility:
+      hidden;
+
+    transform:
+      translateY(-8px);
+
+    pointer-events:
+      none;
+
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease,
+      visibility 180ms ease;
+  }
+
+  .mobile-menu.is-open {
+    opacity:
+      1;
+
+    visibility:
+      visible;
+
+    transform:
+      translateY(0);
+
+    pointer-events:
+      auto;
+  }
+
+  .mobile-menu a {
+    width:
+      100%;
+
+    padding:
+      14px 0;
+
+    color:
+      var(--secondary-text);
+
+    font-size:
+      15px;
+
+    font-weight:
+      500;
+
+    border-bottom:
+      1px solid
+      rgba(231, 232, 228, 0.76);
+  }
+
+  .mobile-menu a:last-child {
+    border-bottom:
+      0;
+  }
+
+
+  /* --------------------------------------------------
+     Hero Page
   -------------------------------------------------- */
 
   .hero-page,
@@ -557,56 +982,9 @@ img {
       hidden;
   }
 
-
-  /* --------------------------------------------------
-     Header - Mobile
-  -------------------------------------------------- */
-
-  .header {
-    min-height:
-      64px;
-
-    grid-template-columns:
-      minmax(0, 1fr)
-      auto;
-
-    padding:
-      16px 0;
-  }
-
-  /*
-    手機只留下 Gayu Dev + Support，
-    避免四個項目擠在一起。
-  */
-
-  .header-item:nth-child(2),
-  .header-item:nth-child(3) {
-    display:
-      none;
-  }
-
-  .header-item:nth-child(4) {
-    text-align:
-      right;
-  }
-
-  .brand {
-    font-size:
-      16px;
-  }
-
-  .header-item {
-    font-size:
-      13px;
-  }
-
-
-  /* --------------------------------------------------
-     Hero - Mobile
-  -------------------------------------------------- */
-
   .hero {
-    min-height: 0;
+    min-height:
+      0;
 
     align-items:
       center;
@@ -620,7 +998,7 @@ img {
       100%;
 
     padding:
-      20px 0 48px;
+      16px 0 42px;
   }
 
   .eyebrow {
@@ -629,9 +1007,6 @@ img {
 
     font-size:
       12px;
-
-    letter-spacing:
-      0.08em;
   }
 
   .hero h1 {
@@ -681,19 +1056,11 @@ img {
 
 
   /* --------------------------------------------------
-     Page 2 exact viewport
+     Apps + Footer Exact Viewport
   -------------------------------------------------- */
 
   .apps-page,
   .apps-page-container {
-    /*
-      這裡刻意使用 height，
-      而不是 min-height。
-
-      Apps + Footer 必須被安排在
-      LINE 真正可見的一個 viewport 裡。
-    */
-
     height:
       var(--viewport-height);
 
@@ -714,7 +1081,7 @@ img {
 
 
   /* --------------------------------------------------
-     Apps - Mobile
+     Apps
   -------------------------------------------------- */
 
   .apps {
@@ -736,7 +1103,7 @@ img {
       100%;
 
     padding:
-      10px 0 8px;
+      8px 0 6px;
   }
 
   .section-label {
@@ -749,13 +1116,10 @@ img {
 
 
   /* --------------------------------------------------
-     App Card - Mobile
+     App Card
   -------------------------------------------------- */
 
   .app-card {
-    width:
-      100%;
-
     flex-direction:
       column;
 
@@ -771,7 +1135,7 @@ img {
 
 
   /* --------------------------------------------------
-     App Icon - Mobile
+     App Icon
   -------------------------------------------------- */
 
   .app-icon {
@@ -802,7 +1166,7 @@ img {
 
 
   /* --------------------------------------------------
-     App Text - Mobile
+     App Text
   -------------------------------------------------- */
 
   .app-heading {
@@ -851,13 +1215,11 @@ img {
     grid-template-columns:
       1fr;
 
+    justify-items:
+      center;
+
     gap:
       7px;
-
-    /*
-      額外保留 LINE / iPhone
-      底部 UI 與圓角空間。
-    */
 
     padding:
       12px
@@ -871,9 +1233,6 @@ img {
       );
 
     text-align:
-      center;
-
-    justify-items:
       center;
   }
 
@@ -918,12 +1277,13 @@ img {
 
 
 /* ==================================================
-   Small phones
+   Small Phones
 ================================================== */
 
 @media (max-width: 380px) {
 
-  .page-container {
+  .page-container,
+  .header-inner {
     width:
       calc(100% - 36px);
   }
@@ -945,21 +1305,13 @@ img {
 
 
 /* ==================================================
-   Short mobile screens / landscape
+   Short Mobile Screens / Landscape
 ================================================== */
 
 @media
   (max-width: 640px)
   and
   (max-height: 620px) {
-
-  /*
-    如果真的遇到很矮的橫向螢幕，
-    不再強制把所有內容裁進一頁。
-
-    這時寧可允許自然捲動，
-    也不要讓資訊消失。
-  */
 
   .hero-page,
   .hero-page-container,
@@ -985,7 +1337,7 @@ img {
 
   .apps-content {
     padding:
-      22px 0 14px;
+      20px 0 12px;
   }
 
   .footer {
@@ -1002,7 +1354,7 @@ img {
 
 
 /* ==================================================
-   Reduced motion
+   Reduced Motion
 ================================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1012,7 +1364,10 @@ img {
       auto;
   }
 
-  .app-card {
+  .app-card,
+  .desktop-nav a,
+  .menu-button span,
+  .mobile-menu {
     transition:
       none;
   }
