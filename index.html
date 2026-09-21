@@ -18,7 +18,7 @@
 
   <link
     rel="stylesheet"
-    href="/style.css?v=202609211330"
+    href="/style.css?v=202609211345"
   />
 </head>
 
@@ -112,7 +112,7 @@
       class="hero-section"
     >
 
-      <div class="page-container hero-container">
+      <div class="page-container">
 
         <div class="hero-content">
 
@@ -138,14 +138,6 @@
             用簡單而溫和的方式，記錄生活，
             也慢慢看見自己的日常節奏。
           </p>
-
-          <a
-            class="hero-link"
-            href="#apps"
-          >
-            Explore apps
-            <span aria-hidden="true">↓</span>
-          </a>
 
         </div>
 
@@ -316,7 +308,6 @@
       );
 
       document.body.classList.add("menu-open");
-
     }
 
 
@@ -336,7 +327,6 @@
       );
 
       document.body.classList.remove("menu-open");
-
     }
 
 
@@ -350,7 +340,6 @@
       } else {
         openMobileMenu();
       }
-
     }
 
 
@@ -387,10 +376,6 @@
       }
     );
 
-
-    /* ==================================================
-       Close menu when returning to desktop
-    ================================================== */
 
     window.addEventListener(
       "resize",
