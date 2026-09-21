@@ -1,4 +1,4 @@
-/* Version: 202609211305 */
+/* Version: 202609211314 */
 
 :root {
   --background: #f7f6f2;
@@ -709,94 +709,44 @@ img {
 ================================================== */
 
 .footer {
-  flex:
-    0 0 auto;
+  flex: 0 0 auto;
 
-  display:
-    grid;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 
-  grid-template-columns:
-    minmax(0, 1fr)
-    auto
-    auto;
+  gap: 28px;
 
-  align-items:
-    start;
+  padding: 24px 0 28px;
 
-  column-gap:
-    28px;
+  border-top: 1px solid var(--border);
 
-  row-gap:
-    0;
-
-  padding:
-    24px 0 28px;
-
-  border-top:
-    1px solid
-    var(--border);
-
-  color:
-    var(--secondary-text);
+  color: var(--secondary-text);
 }
 
-.footer strong {
-  color:
-    var(--text);
+.footer-right {
+  display: flex;
+  align-items: center;
 
-  font-size:
-    14px;
-
-  font-weight:
-    600;
-}
-
-.footer p {
-  margin:
-    7px 0 0;
-
-  font-size:
-    13px;
-
-  line-height:
-    1.6;
+  gap: 24px;
 }
 
 .footer-links {
-  display:
-    flex;
+  display: flex;
+  align-items: center;
 
-  align-items:
-    flex-start;
+  gap: 24px;
 
-  gap:
-    24px;
-
-  font-size:
-    13px;
-}
-
-.footer-links a {
-  transition:
-    color 160ms ease;
-}
-
-.footer-links a:hover {
-  color:
-    var(--text);
+  font-size: 13px;
 }
 
 .copyright {
-  grid-column:
-    auto;
+  margin: 0;
 
-  margin:
-    0;
+  font-size: 13px;
 
-  white-space:
-    nowrap;
+  white-space: nowrap;
 }
-
 
 /* ==================================================
    Mobile
@@ -1209,14 +1159,16 @@ img {
   -------------------------------------------------- */
 
   .footer {
-    flex:
-      0 0 auto;
+    flex: 0 0 auto;
 
-    grid-template-columns:
-      1fr;
+    flex-direction:
+      column;
 
-    justify-items:
+    align-items:
       center;
+
+    justify-content:
+      flex-start;
 
     gap:
       7px;
@@ -1234,6 +1186,20 @@ img {
 
     text-align:
       center;
+  }
+
+  .footer-right {
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    align-items:
+      center;
+
+    gap:
+      7px;
   }
 
   .footer strong {
@@ -1264,14 +1230,14 @@ img {
   }
 
   .copyright {
-    grid-column:
-      auto;
-
     margin:
       0;
 
     font-size:
       11px;
+
+    white-space:
+      nowrap;
   }
 }
 
