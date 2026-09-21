@@ -1,4 +1,4 @@
-/* Version: 202609211330 */
+/* Version: 202609211345 */
 
 :root {
   --background: #f7f6f2;
@@ -37,7 +37,7 @@ html {
 
   scroll-padding-top:
     calc(
-      var(--header-height) + 24px
+      var(--header-height) + 20px
     );
 }
 
@@ -323,25 +323,8 @@ img {
 ================================================== */
 
 .hero-section {
-  min-height:
-    100vh;
-
-  min-height:
-    100svh;
-
   padding-top:
     var(--header-height);
-
-  display:
-    flex;
-
-  align-items:
-    center;
-}
-
-.hero-container {
-  width:
-    100%;
 }
 
 .hero-content {
@@ -352,18 +335,18 @@ img {
     720px;
 
   padding:
-    80px 0 110px;
+    56px 0 46px;
 }
 
 .eyebrow {
   margin:
-    0 0 28px;
+    0 0 22px;
 
   color:
     var(--secondary-text);
 
   font-size:
-    14px;
+    13px;
 
   font-weight:
     500;
@@ -381,16 +364,16 @@ img {
 
   font-size:
     clamp(
-      48px,
-      9vw,
-      82px
+      46px,
+      7vw,
+      72px
     );
 
   line-height:
     0.98;
 
   letter-spacing:
-    -0.055em;
+    -0.052em;
 
   font-weight:
     500;
@@ -398,13 +381,13 @@ img {
 
 .hero-zh {
   margin:
-    36px 0 0;
+    28px 0 0;
 
   font-size:
-    20px;
+    19px;
 
   line-height:
-    1.7;
+    1.65;
 
   letter-spacing:
     0.03em;
@@ -415,57 +398,21 @@ img {
     550px;
 
   margin:
-    42px 0 0;
+    28px 0 0;
 
   color:
     var(--secondary-text);
 
   font-size:
-    17px;
+    16px;
 
   line-height:
-    1.8;
+    1.7;
 }
 
 .intro-zh {
   margin-top:
-    10px;
-}
-
-
-/* ==================================================
-   Hero Link
-================================================== */
-
-.hero-link {
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  gap:
-    8px;
-
-  margin-top:
-    38px;
-
-  color:
-    var(--secondary-text);
-
-  font-size:
-    13px;
-
-  font-weight:
-    500;
-
-  transition:
-    color 160ms ease;
-}
-
-.hero-link:hover {
-  color:
-    var(--text);
+    7px;
 }
 
 
@@ -476,11 +423,11 @@ img {
 .apps-section {
   scroll-margin-top:
     calc(
-      var(--header-height) + 24px
+      var(--header-height) + 20px
     );
 
   padding:
-    110px 0 120px;
+    18px 0 42px;
 }
 
 .section-label {
@@ -494,13 +441,13 @@ img {
     space-between;
 
   margin-bottom:
-    20px;
+    14px;
 
   color:
     var(--secondary-text);
 
   font-size:
-    13px;
+    12px;
 
   letter-spacing:
     0.05em;
@@ -525,15 +472,6 @@ img {
     24px;
 }
 
-
-/*
-  目前只有一個 App。
-
-  讓單一 App 卡片使用完整寬度。
-  未來新增第二個 App 時，
-  不需要修改 HTML 結構。
-*/
-
 .apps-grid > :only-child {
   grid-column:
     1 / -1;
@@ -551,11 +489,14 @@ img {
   display:
     flex;
 
+  align-items:
+    center;
+
   gap:
-    30px;
+    24px;
 
   padding:
-    34px;
+    28px;
 
   background:
     var(--surface);
@@ -575,14 +516,14 @@ img {
 
 .app-card:hover {
   transform:
-    translateY(-3px);
+    translateY(-2px);
 
   border-color:
     #dfe3de;
 
   box-shadow:
-    0 18px 50px
-    rgba(55, 64, 58, 0.06);
+    0 16px 42px
+    rgba(55, 64, 58, 0.055);
 }
 
 
@@ -592,28 +533,28 @@ img {
 
 .app-icon {
   flex:
-    0 0 94px;
+    0 0 84px;
 
   width:
-    94px;
+    84px;
 
   height:
-    94px;
+    84px;
 
   min-width:
-    94px;
+    84px;
 
   max-width:
-    94px;
+    84px;
 
   min-height:
-    94px;
+    84px;
 
   max-height:
-    94px;
+    84px;
 
   border-radius:
-    24px;
+    21px;
 
   overflow:
     hidden;
@@ -651,7 +592,7 @@ img {
     center;
 
   gap:
-    14px;
+    12px;
 
   flex-wrap:
     wrap;
@@ -662,7 +603,7 @@ img {
     0;
 
   font-size:
-    27px;
+    25px;
 
   font-weight:
     500;
@@ -673,7 +614,7 @@ img {
 
 .status {
   padding:
-    6px 10px;
+    5px 9px;
 
   background:
     var(--soft-green);
@@ -685,7 +626,7 @@ img {
     #657169;
 
   font-size:
-    12px;
+    11px;
 
   font-weight:
     500;
@@ -693,33 +634,33 @@ img {
 
 .app-description {
   margin:
-    18px 0 0;
+    12px 0 0;
 
   color:
     var(--secondary-text);
 
   font-size:
-    16px;
+    15px;
 
   line-height:
-    1.65;
+    1.55;
 }
 
 .app-description-zh {
   margin-top:
-    5px;
+    4px;
 }
 
 
 /* ==================================================
-   Footer Section
+   Footer
 ================================================== */
 
 .footer-section {
   padding:
     0 0
     max(
-      28px,
+      22px,
       env(safe-area-inset-bottom)
     );
 }
@@ -738,7 +679,7 @@ img {
     28px;
 
   padding:
-    28px 0 0;
+    20px 0 0;
 
   border-top:
     1px solid
@@ -753,7 +694,7 @@ img {
     var(--text);
 
   font-size:
-    14px;
+    13px;
 
   font-weight:
     600;
@@ -761,13 +702,13 @@ img {
 
 .footer-brand p {
   margin:
-    7px 0 0;
+    5px 0 0;
 
   font-size:
-    13px;
+    12px;
 
   line-height:
-    1.6;
+    1.5;
 }
 
 .footer-right {
@@ -778,7 +719,7 @@ img {
     center;
 
   gap:
-    24px;
+    22px;
 }
 
 .footer-links {
@@ -789,10 +730,10 @@ img {
     center;
 
   gap:
-    24px;
+    20px;
 
   font-size:
-    13px;
+    12px;
 }
 
 .footer-links a {
@@ -810,7 +751,7 @@ img {
     0;
 
   font-size:
-    13px;
+    12px;
 
   white-space:
     nowrap;
@@ -973,36 +914,28 @@ img {
      Hero
   -------------------------------------------------- */
 
-  .hero-section {
-    min-height:
-      auto;
-
-    padding-top:
-      var(--header-height);
-  }
-
   .hero-content {
     max-width:
       100%;
 
     padding:
-      72px 0 86px;
+      40px 0 34px;
   }
 
   .eyebrow {
     margin-bottom:
-      20px;
+      18px;
 
     font-size:
-      12px;
+      11px;
   }
 
   .hero-content h1 {
     font-size:
       clamp(
-        40px,
-        12vw,
-        56px
+        38px,
+        11vw,
+        52px
       );
 
     line-height:
@@ -1014,34 +947,29 @@ img {
 
   .hero-zh {
     margin-top:
-      24px;
+      20px;
 
     font-size:
-      17px;
+      16px;
+
+    line-height:
+      1.55;
+  }
+
+  .intro {
+    margin-top:
+      22px;
+
+    font-size:
+      14px;
 
     line-height:
       1.6;
   }
 
-  .intro {
-    margin-top:
-      26px;
-
-    font-size:
-      15px;
-
-    line-height:
-      1.65;
-  }
-
   .intro-zh {
     margin-top:
-      7px;
-  }
-
-  .hero-link {
-    margin-top:
-      30px;
+      6px;
   }
 
 
@@ -1051,12 +979,12 @@ img {
 
   .apps-section {
     padding:
-      72px 0 82px;
+      18px 0 38px;
   }
 
   .section-label {
     margin-bottom:
-      14px;
+      12px;
 
     font-size:
       11px;
@@ -1084,14 +1012,17 @@ img {
     flex-direction:
       column;
 
+    align-items:
+      flex-start;
+
     gap:
-      14px;
+      12px;
 
     padding:
-      20px;
+      18px;
 
     border-radius:
-      22px;
+      20px;
   }
 
 
@@ -1101,28 +1032,28 @@ img {
 
   .app-icon {
     flex:
-      0 0 64px;
+      0 0 60px;
 
     width:
-      64px;
+      60px;
 
     height:
-      64px;
+      60px;
 
     min-width:
-      64px;
+      60px;
 
     max-width:
-      64px;
+      60px;
 
     min-height:
-      64px;
+      60px;
 
     max-height:
-      64px;
+      60px;
 
     border-radius:
-      16px;
+      15px;
   }
 
 
@@ -1137,12 +1068,12 @@ img {
 
   .app-heading h2 {
     font-size:
-      22px;
+      21px;
   }
 
   .status {
     padding:
-      5px 9px;
+      4px 8px;
 
     font-size:
       10px;
@@ -1150,13 +1081,13 @@ img {
 
   .app-description {
     margin-top:
-      10px;
+      8px;
 
     font-size:
-      14px;
+      13px;
 
     line-height:
-      1.55;
+      1.5;
   }
 
   .app-description-zh {
@@ -1172,9 +1103,9 @@ img {
   .footer-section {
     padding-bottom:
       max(
-        32px,
+        28px,
         calc(
-          18px +
+          16px +
           env(safe-area-inset-bottom)
         )
       );
@@ -1188,10 +1119,10 @@ img {
       center;
 
     gap:
-      14px;
+      12px;
 
     padding-top:
-      24px;
+      18px;
 
     text-align:
       center;
@@ -1218,7 +1149,7 @@ img {
       center;
 
     gap:
-      8px;
+      7px;
   }
 
   .footer-links {
@@ -1254,15 +1185,15 @@ img {
   .hero-content h1 {
     font-size:
       clamp(
-        38px,
+        36px,
         11vw,
-        50px
+        48px
       );
   }
 
   .app-card {
     padding:
-      18px;
+      16px;
   }
 }
 
@@ -1282,7 +1213,6 @@ img {
   .desktop-nav a,
   .menu-button span,
   .mobile-menu,
-  .hero-link,
   .footer-links a {
     transition:
       none;
